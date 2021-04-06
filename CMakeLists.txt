@@ -46,17 +46,16 @@ install(TARGETS kak
         RUNTIME DESTINATION bin)
 # share folder
 install(FILES share/kak/kakrc DESTINATION share/kak)
-install(DIRECTORY colors/ DESTINATION share/kak/colors/)
-install(DIRECTORY rc/ DESTINATION share/kak/rc/)
+install(DIRECTORY colors/     DESTINATION share/kak/colors/)
+install(DIRECTORY rc/         DESTINATION share/kak/rc/)
 # share/kak/autoload/ is symlink to rc/
 install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E \
-                create_symlink rc/ ${CMAKE_INSTALL_PREFIX}/share/kak/autoload \
-              )"
+                              create_symlink rc/ ${CMAKE_INSTALL_PREFIX}/share/kak/autoload)"
 )
 # (TODO need to compress)
-install(FILES doc/kak.1 DESTINATION share/man/man1/)
+install(FILES doc/kak.1       DESTINATION share/man/man1/)
 install(FILES README.asciidoc DESTINATION share/doc/kak/)
-install(DIRECTORY doc/pages/ DESTINATION share/kak/doc/)
+install(DIRECTORY doc/pages/  DESTINATION share/kak/doc/)
 
 # Package configuration
 include(InstallRequiredSystemLibraries)
