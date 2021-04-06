@@ -72,5 +72,6 @@ include(CPack)
 # testing
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/test/run ${CMAKE_CURRENT_BINARY_DIR}/run COPYONLY)
 enable_testing()
+include(CTest)
 add_test(NAME kak_test
          COMMAND run)
