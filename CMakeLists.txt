@@ -42,7 +42,8 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
 endif()
 
 # Install binary and files
-install(TARGETS kak)
+install(TARGETS kak
+        RUNTIME DESTINATION bin)
 # share folder
 install(FILES share/kak/kakrc DESTINATION share/kak)
 install(DIRECTORY colors/ DESTINATION share/kak/colors/)
@@ -67,3 +68,9 @@ set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.asciidoc"
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/UNLICENSE")
 # Package generation
 include(CPack)
+
+# testing
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/test/run ${CMAKE_CURRENT_BINARY_DIR}/run COPYONLY)
+enable_testing()
+add_test(NAME kak_test
+         COMMAND run)
