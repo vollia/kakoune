@@ -50,7 +50,7 @@ install(DIRECTORY colors/     DESTINATION share/kak/colors/)
 install(DIRECTORY rc/         DESTINATION share/kak/rc/)
 # share/kak/autoload/ is symlink to rc/
 install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E \
-                              create_symlink rc/ ${CMAKE_INSTALL_PREFIX}/share/kak/autoload)"
+                              create_symlink rc/ \${CMAKE_INSTALL_PREFIX}/share/kak/autoload)"
 )
 # (TODO need to compress)
 install(FILES doc/kak.1       DESTINATION share/man/man1/)
@@ -59,10 +59,11 @@ install(DIRECTORY doc/pages/  DESTINATION share/kak/doc/)
 
 # Package configuration
 include(InstallRequiredSystemLibraries)
-set(CPACK_CMAKE_GENERATOR "Unix Makefiles")
 set(CPACK_GENERATOR "TGZ;ZIP")
+set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
+set(CPACK_PACKAGE_FILE_NAME ${PROJECT_NAME}-${KAKOUNE_VERSION})
 set(CPACK_PACKAGE_EXECUTABLES "kak")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Selection-oriented code editor inspired by vim")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Selection-oriented code editor inspired by Vim")
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README.asciidoc")
 set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/UNLICENSE")
 # Package generation
