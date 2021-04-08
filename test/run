@@ -25,7 +25,7 @@ main() {
 
   root="$PWD"
   testdir="$(dirname $0)"
-  kak="$(realpath $testdir)/../src/kak"
+  kak=${1:-$root/../src/kak}
   tmpdir="${TMPDIR:-/tmp}"
   work=$(mktemp -d $tmpdir/kak-tests.XXXXXXXX)
   session="kak-tests"
