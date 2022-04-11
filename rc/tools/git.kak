@@ -439,39 +439,39 @@ define-command -params 1.. \
                         for $i (0..$to_count - 1) {
                             $line = $to_line + $i;
                             $flags .= " $line|\{green\}$add_char";
-                        }
+                       }
                     }
                     elsif ($from_count > 0 and $to_count == 0) {
                         if ($to_line == 0) {
                             $flags .= " 1|\{red\}$top_char";
-                        } else {
+                       } else {
                             $flags .= " $to_line|\{red\}$del_char";
-                        }
+                       }
                     }
                     elsif ($from_count > 0 and $from_count == $to_count) {
                         for $i (0..$to_count - 1) {
                             $line = $to_line + $i;
                             $flags .= " $line|\{blue\}$mod_char";
-                        }
+                       }
                     }
                     elsif ($from_count > 0 and $from_count < $to_count) {
                         for $i (0..$from_count - 1) {
                             $line = $to_line + $i;
                             $flags .= " $line|\{blue\}$mod_char";
-                        }
+                       }
                         for $i ($from_count..$to_count - 1) {
                             $line = $to_line + $i;
                             $flags .= " $line|\{green\}$add_char";
-                        }
+                       }
                     }
                     elsif ($to_count > 0 and $from_count > $to_count) {
                         for $i (0..$to_count - 2) {
                             $line = $to_line + $i;
                             $flags .= " $line|\{blue\}$mod_char";
-                        }
+                       }
                         $last = $to_line + $to_count - 1;
                         $flags .= " $last|\{blue+u\}$mod_char";
-                    }
+                   }
                 }
             }
             print "set-option buffer git_diff_flags $flags\n"
