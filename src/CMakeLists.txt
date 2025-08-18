@@ -43,7 +43,7 @@ set(KAKOUNE_SOURCES
   ranges.cc
   ranked_match.cc
   regex.cc
-  regex_impl.cc
+  regex_vm.cc
   register_manager.cc
   remote.cc
   scope.cc
